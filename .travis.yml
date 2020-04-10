@@ -2,8 +2,6 @@ language: scala
 sudo: false
 before_install:
   - nvm install node
-scala:
-- 2.10.4
 before_script:
 - gpg --import arpnetworking.key
 - if [ \( -n "${TRAVIS_TAG}" \) -a  "${TRAVIS_PULL_REQUEST}" = "false" ]; then export TARGET="${TARGET} publishSigned sonatypeRelease"; fi;
@@ -13,11 +11,10 @@ notifications:
   email:
     recipients:
     - brandon@arpnetworking.com
-jdk:
-- oraclejdk8
 cache:
   directories:
-  - $HOME/.ivy2
+  - "$HOME/.ivy2"
+  - "$HOME/.jdk"
 env:
   global:
   - TARGET="scripted"
